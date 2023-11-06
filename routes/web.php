@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/users/{user}/achievements', [AchievementsController::class, 'index']);
-Route::get('/users/event-test', [AchievementsController::class, 'testEvent']);
+Route::get('/users/event-test-lesson', [AchievementsController::class, 'testEvent']);
 Route::get('/users/event-test-comment', [AchievementsController::class, 'testEventComment']);

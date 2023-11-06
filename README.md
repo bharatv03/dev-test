@@ -1,66 +1,91 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Dev Test BackEnd
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+It conains the achievement counter increament on the basis lessons watched and comments written. Which increase the badge achieved on the basis of achievement counter entries in database.
 
-## About Laravel
+## Table of Contents
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Testing](#testing)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Getting Started
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Please use following instruction to take care to install the project on your server or local machine
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Prerequisites
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+List any software and dependencies that need to be installed to run this project. Include instructions on how to install them.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- [PHP](https://www.php.net/) >= 8.2
+- [Composer](https://getcomposer.org/)
+- [MySQL](https://www.mysql.com/) (or any other supported database)
 
-## Laravel Sponsors
+### Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+1. Clone the repository:
 
-### Premium Partners
+   ```bash
+   git clone git@github.com:bharatv03/dev-test.git
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+2. Install libraries 
 
-## Contributing
+    composer install
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Usage
 
-## Code of Conduct
+After cloning is done please use following commands to activate your project
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. This command will help you point the project to accurate Database
 
-## Security Vulnerabilities
+    cp .env.example .env
+    **Please update database details in .env file as per your server.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. This command will activate your above file on the project for being able to use
+    
+    php artisan config:clear
 
-## License
+3. The below command will create all the tables that are being used for this project
+    
+    php artisan migrate
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. The below command will help you create the admin user entry 
+
+    php artisan db:seed
+
+5. The command below will start the server on local machine
+
+    php artisan serve
+
+6. After running the server command your URL will be active with below URL:
+
+    https://localhost:8000
+
+The above commands will help you create project run successfully to utilize all the features built
+
+## Features
+I have added two additional URLs which will help to add fake entries on random basis for users available in DB. Plus one URL which was mentioned as per the task, which will show the details of selected user. if user won't exist it will show 404 page. Please follow below URL to run the functionality.
+
+1. View User Achievements = http://localhost::8000/users/{user_id}/achievements
+2. Add Lesson = http://localhost::8000/users/event-test-lesson
+3. Add Comment = http://localhost::8000/users/event-test-comment
+
+## Testing
+
+    For Testing purpose you use command  in ``Bash this will help you to test all the routes have been created
+
+    php artisan test
+
+    I have added few test cases:
+
+1. Where no comments no lessons and no achievements are available with 0 badges
+2. Where 1 lesson is watched and total 1 achievement is achieved with 0 badges
+3. Where 1 comment is written and total 2 achievement is achieved with 0 badges
+4. Where 4 more comments are added and total 3 achievements have been achieved with 0 badges
+5. Where 2 more comments are added and total 4 achievemetns have been achieved with 1 badge
+6. HTTP Test case with No url found will throw 404 not found
+7. HTTP Test case with No user found will throw 404 not found
+8. HTTP Test case where it will give success with json data with 200
