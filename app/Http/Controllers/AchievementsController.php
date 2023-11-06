@@ -14,9 +14,13 @@ class AchievementsController extends Controller
 {
     public function index(User $user)
     {
+        $checkUser = User::find($user->id);
+        if(!$checkUser){
+            return response()->json(['error'=>__('message.user.not_found')], 404);
+        }
         $returnArray = Helper::combinedAchievements($user->id);
-        
-        return response()->json($returnArray);
+
+        return response()->json($returnArray, 200);
     }
 
     public function testEvent()
@@ -27,8 +31,8 @@ class AchievementsController extends Controller
         /**
         * creating fake 1 watch entry of next lesson
         */
-        //$randomUser = $event->user->inRandomOrder()->first();
-        $randomUser = $user->where('id', 1)->first();
+        $randomUser = $user->inRandomOrder()->first();
+        //$randomUser = $user->find(1);
         
         $nextLesson = $lesson->doesnthave('watched')->orderBy('id','asc')->first();
         
@@ -48,6 +52,7 @@ class AchievementsController extends Controller
         * called to check conditions and trigger
         */
         $randomUser = $user->inRandomOrder()->first();
+        //$randomUser = $user->find(1);
         $comment->factory()->create(['user_id' => $randomUser->id]);
 
         event(new CommentWritten($comment, $randomUser));

@@ -38,7 +38,7 @@ class Achievements
 
         //dispacth Badge Unclocked for total achievements if it meets the condition
         if($achievementCounter) {
-            event(new BadgesUnlocked($achievementCounter, $event->user->id));
+            event(new BadgesUnlocked($achievementCounter, $event->user));
         }
     }
 }

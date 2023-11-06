@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         /* Lesson seeders */
         $lessons = Lesson::factory()
-            ->count(20)
+            ->count(100)
             ->create();
 
         /* User seeders */
@@ -93,7 +93,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Advanced'
             ],
             [
-                'count' => '8',
+                'count' => '10',
                 'achievement_slug' => 'badge',
                 'name' => 'Master'
             ],
