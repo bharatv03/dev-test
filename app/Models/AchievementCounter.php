@@ -19,4 +19,9 @@ class AchievementCounter extends Model
         'achievement_slug',
         'name'
     ];
+
+    public function achievements()
+    {
+        return $this->hasMany(Achievement::class);
+    }
 }

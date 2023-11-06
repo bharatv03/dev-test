@@ -7,13 +7,17 @@ use Illuminate\Queue\SerializesModels;
 
 class BadgesUnlocked
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable, SerializesModels;
+
+    public $achievementCounter;
+    public $user;
 
     /**
      * Create a new event instance.
      */
-    public function __construct($achievementCounter, $userId)
+    public function __construct($achievementCounter, $user)
     {
-        //
+        $this->achievementCounter = $achievementCounter;
+        $this->user = $user;
     }
 }

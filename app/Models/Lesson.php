@@ -17,4 +17,12 @@ class Lesson extends Model
     protected $fillable = [
         'title'
     ];
+
+    /**
+     * The lessons that a user has watched.
+     */
+    public function watched()
+    {
+        return $this->belongsToMany(User::class)->wherePivot('watched', true);
+    }
 }

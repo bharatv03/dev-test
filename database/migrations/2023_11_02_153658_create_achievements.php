@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('achievements', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('achievement_id')->constrained();
+            $table->foreignId('achievement_counter_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

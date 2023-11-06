@@ -23,7 +23,7 @@ class Badges
     public function handle(BadgesUnlocked $event): void
     {
          //adding data to achievements
-         Achievement::create(['achievement_id'=>$event->acheivement->id,
+         Achievement::create(['achievement_counter_id'=>$event->achievementCounter->id,
          'user_id' => $event->user->id]);
     }
 }
