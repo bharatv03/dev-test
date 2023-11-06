@@ -31,7 +31,7 @@ class AchievementsController extends Controller
         /**
         * creating fake 1 watch entry of next lesson
         */
-        $randomUser = $user->inRandomOrder()->first();
+        $randomUser = $user->whereNotIn('id', [1])->inRandomOrder()->first();
         //$randomUser = $user->find(1);
         
         $nextLesson = $lesson->doesnthave('watched')->orderBy('id','asc')->first();
@@ -51,7 +51,7 @@ class AchievementsController extends Controller
         * to perform controller task where after below event can be 
         * called to check conditions and trigger
         */
-        $randomUser = $user->inRandomOrder()->first();
+        $randomUser = $user->whereNotIn('id', [1])->inRandomOrder()->first();
         //$randomUser = $user->find(1);
         $comment->factory()->create(['user_id' => $randomUser->id]);
 

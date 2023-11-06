@@ -68,6 +68,7 @@ The above commands will help you create project run successfully to utilize all 
 
 ## Features
 I have added two additional URLs which will help to add fake entries on random basis for users available in DB. Plus one URL which was mentioned as per the task, which will show the details of selected user. if user won't exist it will show 404 page. Please follow below URL to run the functionality.
+**Note: I have kept UserId = 1 for testing purpose please dont use that user ID
 
 1. View User Achievements = http://localhost::8000/users/{user_id}/achievements
 2. Add Lesson = http://localhost::8000/users/event-test-lesson
@@ -75,11 +76,11 @@ I have added two additional URLs which will help to add fake entries on random b
 
 ## Testing
 
-    For Testing purpose you use command  in ``Bash this will help you to test all the routes have been created
+    For Testing purpose you use command 
 
     php artisan test
 
-    I have added few test cases:
+    I have added few test cases where I have kept the UserId = 1
 
 1. Where no comments no lessons and no achievements are available with 0 badges
 2. Where 1 lesson is watched and total 1 achievement is achieved with 0 badges
